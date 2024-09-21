@@ -2,8 +2,12 @@ import chess
 import sys
 import requests
 import json
+import os
 import time
 from eval import choose_best_move
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class ChessEngine:
@@ -189,13 +193,8 @@ class LichessBot:
         }
 
 
-def get_api_token():
-    api_token = "lip_nLhxdI6qVHlb4Zvnf1L2"  # Replace with your actual API token
-    return api_token
-
-
 def main():
-    api_token = get_api_token()
+    api_token = os.getenv("LICHESS_API_TOKEN")
     bot = LichessBot(api_token)
 
     try:
